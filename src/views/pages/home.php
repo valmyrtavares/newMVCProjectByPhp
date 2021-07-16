@@ -1,3 +1,5 @@
 <?php $render('header'); ?>
 
-Opa, <?=$nome;?>
+<h1>Eu sou o header</h1>
+
+<?php $render('footer'); ?>
