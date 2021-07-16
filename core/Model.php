@@ -1,4 +1,3 @@
-<?php
 namespace core;
 
 use \core\Database;
@@ -7,16 +6,16 @@ use \ClanCats\Hydrahon\Query\Sql\FetchableInterface;
 
 class Model {
 
-    protected static $_h;
+    protected $_h;
     
     public function __construct() {
-        self::_checkH();
+        $this->_checkH();
     }
 
-    public static function _checkH() {
-        if(self::$_h == null) {
+    public function _checkH() {
+        if($this->_h == null) {
             $connection = Database::getInstance();
-            self::$_h = new Builder('mysql', function($query, $queryString, $queryParameters) use($connection) {
+            $this->_h = new Builder('mysql', function($query, $queryString, $queryParameters) use($connection) {
                 $statement = $connection->prepare($queryString);
                 $statement->execute($queryParameters);
 
@@ -27,33 +26,31 @@ class Model {
             });
         }
         
-        self::$_h = self::$_h->table( self::getTableName() );
+        $this->_h = $this->_h->table( $this->getTableName() );
     }
 
-    public static function getTableName() {
-        $className = explode('\\', get_called_class());
-        $className = end($className);
-        return strtolower($className).'s';
+    public  function getTableName() {
+        return $this->table;
     }
 
-    public static function select($fields = []) {
-        self::_checkH();
-        return self::$_h->select($fields);
+    public  function select($fields = []) {
+        $this->_checkH();
+        return $this->_h->select($fields);
     }
 
-    public static function insert($fields = []) {
-        self::_checkH();
-        return self::$_h->insert($fields);
+    public  function insert($fields = []) {
+        $this->_checkH();
+        return $this->_h->insert($fields);
     }
 
-    public static function update($fields = []) {
-        self::_checkH();
-        return self::$_h->update($fields);
+    public  function update($fields = []) {
+        $this->_checkH();
+        return $this->_h->update($fields);
     }
 
-    public static function delete() {
-        self::_checkH();
-        return self::$_h->delete();
+    public  function delete() {
+        $this->_checkH();
+        return $this->_h->delete();
     }
 
 }

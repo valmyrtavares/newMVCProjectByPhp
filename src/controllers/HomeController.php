@@ -11,8 +11,9 @@ class HomeController extends Controller {
     }
 
     public function artigos() {
-        $post = POST::select()->execute();
-        $this->render('artigos',['post' => $post]);
+        $post = new Post();
+        $data = $post->select()->get();
+        $this->render('artigos',['post' => $data]);
     }
 
     public function admin() {
