@@ -9,6 +9,7 @@
     <title>Document</title>
 </head>    
     <h1>Eu sou o ARTIGOS</h1>
+    <?php print_r($post);?>
     
 
 <?php $render('footer'); ?>

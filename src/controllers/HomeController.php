@@ -2,6 +2,7 @@
 namespace src\controllers;
 
 use \core\Controller;
+use \src\models\Post;
 
 class HomeController extends Controller {
 
@@ -10,7 +11,8 @@ class HomeController extends Controller {
     }
 
     public function artigos() {
-        $this->render('artigos');
+        $post = POST::select()->execute();
+        $this->render('artigos',['post' => $post]);
     }
 
     public function admin() {
