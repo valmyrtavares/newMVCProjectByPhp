@@ -9,6 +9,18 @@ class HomeController extends Controller {
         $this->render('home');
     }
 
+    public function artigos() {
+        $this->render('artigos');
+    }
+
+    public function admin() {
+        $this->render('admin');
+    }
+
+    public function sobre() {
+        $this->render('sobre');
+    }
+
     // public function index() {
     //     $this->render('home', ['nome' => 'Bonieky']);
     // }

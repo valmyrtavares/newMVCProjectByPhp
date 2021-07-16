@@ -9,9 +9,9 @@
 </head>
 <body>
 <header class="container">
-<a href="">Home</a>
-<a href="">Artigos</a>
-<a href="">Admin</a>
-<a href="">Quem somos</a>
+<a href="<?= $base ?>/">Home</a>
+<a href="<?= $base ?>/artigos">Artigos</a>
+<a href="<?= $base ?>/admin">Admin</a>
+<a href="<?= $base ?>/sobre">Sobre</a>
 </header>
     
